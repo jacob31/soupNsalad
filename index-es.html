@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!-- created by Ben Silbernagel & inspired from W3Schools free template.
+http://www.w3schools.com/w3css/tryw3css_templates_pizza.htm
+-->
+<html>
+<title>Bienvenido al sitio web de Soup & Salad</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+<link rel="stylesheet" href="css/stylesheet.css">
+
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="top">
+  <ol class="navbar font-24px black opacity" id="myNavbar">
+    <li><a href="#">Soup & Salad</a></li>
+  <!-- Right-sided navbar links -->
+    <li class="float-right hide-small"><a href="index.html">ENGLISH</a></li>   
+    <li class="float-right hide-small"><a href="#about">ACERCA DE</a></li>
+    <li class="float-right hide-small"><a href="#menu">MENÚ</a></li>
+  <!-- Hide float-right links on small screens and replace them with a menu icon -->
+    <li>
+      <a href="javascript:void(0)" class="float-right hide-large hide-medium" onclick="fa_open()">
+        <i class="fa fa-bars fa-padding"></i>
+      </a>
+    </li>
+  </ol>
+</div>
+
+<!-- Sidenav on small screens when clicking the menu icon -->
+<nav class="sidenav black animate-left hide-medium hide-large" id="mySidenav">
+  <a href="javascript:void(0)" onclick="fa_close()" class="font-36px close-padding">CERRAR<b>  X</b></a>
+  <a class="font-24px" href="#menu" onclick="fa_close()">MENÚ</a>
+  <a class="font-24px" href="#about" onclick="fa_close()">ACERCA DE</a>
+  <a class="font-24px" href="index.html" onclick="fa_close()">ENGLISH</a>
+</nav>
+  
+<!-- Splash image -->
+<header class="bgimg display-container grayscale-min" id="home">
+  <div class="center-text display-bottommiddle">
+    <p><a href="#menu" class="btn font-36px splash-padding">Echa un vistazo a nuestro menú</a></p>
+  </div>
+</header>
+
+<!-- Menu Container -->
+<div class="container black padding-48px font-36px" id="menu">
+  <div class="content">
+  
+    <h1 class="title center-text font-64px">MENÚ</h1>
+    <div class="row center-text border">
+      <a id="myLink" href="javascript:void(0)" onclick="open_menu(event, 'Soups');">
+        <div class="grayscale-min col s4 tablink padding-large hover-green">Sopas</div>
+      </a>
+      <a href="javascript:void(0)" onclick="open_menu(event, 'Salads');">
+        <div class="grayscale-min col s4 tablink padding-large hover-green">Ensaladas</div>
+      </a>
+    </div>
+
+    <div id="Soups" class="container menu padding-32px white">
+      <h2><b>De Frijols</b></h2>
+      <hr>
+   
+      <h2><b>Lentejas</b><span class="float-right tag deep-orange round font-24px">Populares</span></h2>
+      <hr>
+      
+      <h2><b>Crema de Elote</b><span class="float-right tag khaki round font-24px">Cremoso!</span></h2>
+      <hr>
+
+      <h2><b>Vegetales</b></h2>
+      <hr>
+
+      <h2><b>Crema de Hongos</b></h2>
+    </div>
+
+    <div id="Salads" class="container menu padding-32px white">
+      <h2><b>Crear tu propio...</b><span class="float-right tag deep-orange round font-24px">Populares</span></h2>
+      <hr>
+
+      <h2><b>Chícharos</b></h2>
+      <hr>
+   
+      <h2><b>Zanahoria</b></h2>
+      <hr>
+      
+      <h2><b>Rotini</b></h2>
+      <hr>
+
+      <h2><b>Brócoli y Coliflor</b></h2>
+      <hr>
+
+      <h2><b>Fetuccine Parmesano</b></h2>
+      <hr>
+
+      <h2><b>Pepino y Tomate</b></h2>
+      <hr>
+
+      <h2><b>Papas con Ajo</b><span class="float-right tag khaki round font-24px">Cremoso!</span></h2>
+   </div>
+
+  </div>
+</div>
+
+<!-- About Container -->
+<div class="container padding-32px green grayscale-min font-24px" id="about">
+  <div class="content center-text">
+    <h1 class="title font-64px">Acerca De</h1>
+    <p>Sopa y ensalada es la ubicación justo al sur de Siloam Spring's dowtown. Ofrecemos un almuerzo vegetariano buffet conveniente.</p>
+    <q>Gran relación calidad-precio y una opción más saludable para disfrutar del almuerzo.</q><span>- Ben S.</span>
+
+    <div class="row">
+      <div class="col s12">
+        <h2 class="font-48px">Horas de trabajo</h2>
+        <p>Domingo - Jueves<br>11 a.m. a 4:00 p.m.</p>
+        <p>Viernes<br>11 a.m. a 3:00 p.m.</p>
+      </div>
+      <div class="col s12">  
+        <h2 class="font-48px">Ubicación</h2>
+        <span>315 W Tulsa St,<br>Siloam Springs, AR 72761</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="googleMap" class="grayscale-max"></div>
+
+<!-- Footer -->
+<footer class="center-text black padding-48px font-36px">
+  <q>Mejor es una cena de hierbas donde está el amor, que un becerro engordado con odio.</q>
+  <p>Proverbios 15:17</p>
+</footer>
+
+<!-- Add Google Maps -->
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script>
+// Google Map Location //
+var myCenter = new google.maps.LatLng(36.178291,-94.544269);
+
+function initialize() {
+var mapProp = {
+  center: myCenter,
+  zoom: 15,
+  scrollwheel: false,
+  draggable: false,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+
+var marker = new google.maps.Marker({
+  position: myCenter,
+});
+
+marker.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+// Tabbed Menu //
+function open_menu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" green", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " green";
+}
+document.getElementById("myLink").click();
+
+// Fa-bar Toggle //
+var mySidenav = document.getElementById("mySidenav");
+
+function fa_open() {
+    if (mySidenav.style.display === 'block') {
+        mySidenav.style.display = 'none';
+    } else {
+        mySidenav.style.display = 'block';
+    }
+}
+
+// Close the sidenav with the close button
+function fa_close() {
+    mySidenav.style.display = "none";
+}
+</script>
+
+</body>
+</html>
